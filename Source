@@ -1,0 +1,475 @@
+-- this is also self-made notification! (some scripts are not mine and was from roPrompt. UI is also from roprompts but i used screen color pick and made it look more real.
+
+local roUI = {}
+
+
+function roUI:CreateChoiceNotify(titlea, desca, iconz, canceltext, comfirmtext, timer, callback, nocallback)
+	callback = callback or function() end
+	timer = timer or 5
+	
+	local roloxxUI = Instance.new("ScreenGui")
+	local BuyScreenLol = Instance.new("Frame")
+	local UICorner = Instance.new("UICorner")
+	local title = Instance.new("TextLabel")
+	local holder = Instance.new("Frame")
+	local UIListLayout = Instance.new("UIListLayout")
+	local cancel = Instance.new("TextButton")
+	local UICorner_2 = Instance.new("UICorner")
+	local comfirm = Instance.new("TextButton")
+	local UICorner_3 = Instance.new("UICorner")
+	local theline = Instance.new("Frame")
+	local desc = Instance.new("TextLabel")
+	local icon = Instance.new("ImageLabel")
+	local UICorner_4 = Instance.new("UICorner")
+	local UIStroke = Instance.new("UIStroke")
+	local UIStroke2 = Instance.new("UIStroke")
+	
+	roloxxUI.Name = "roloxUI"
+	roloxxUI.Parent = game.CoreGui
+	roloxxUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+	BuyScreenLol.Name = "BuyScreenLol"
+	BuyScreenLol.Parent = roloxxUI
+	BuyScreenLol.AnchorPoint = Vector2.new(0.5, 0.5)
+	BuyScreenLol.BackgroundColor3 = Color3.fromRGB(44, 45, 48)
+	BuyScreenLol.BorderSizePixel = 0
+	BuyScreenLol.Position = UDim2.new(0.499, 0,-0.999, 0)
+	BuyScreenLol.Size = UDim2.new(0, 412, 0, 359)
+
+	UICorner.Parent = BuyScreenLol
+
+	title.Name = "title"
+	title.Parent = BuyScreenLol
+	title.AnchorPoint = Vector2.new(0.5, 0.5)
+	title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	title.BackgroundTransparency = 1.000
+	title.BorderSizePixel = 0
+	title.Position = UDim2.new(0.500111699, 0, 0.0717996806, 0)
+	title.Size = UDim2.new(0, 367, 0, 29)
+	title.Font = Enum.Font.GothamSemibold
+	title.Text = titlea
+	title.TextColor3 = Color3.fromRGB(255, 255, 255)
+	title.TextScaled = true
+	title.TextSize = 14.000
+	title.TextWrapped = true
+
+	holder.Name = "holder"
+	holder.Parent = BuyScreenLol
+	holder.AnchorPoint = Vector2.new(0.5, 0.5)
+	holder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	holder.BackgroundTransparency = 1.000
+	holder.BorderSizePixel = 0
+	holder.Position = UDim2.new(0.501280189, 0, 0.866197705, 0)
+	holder.Size = UDim2.new(0, 314, 0, 1)
+
+	UIListLayout.Parent = holder
+	UIListLayout.FillDirection = Enum.FillDirection.Horizontal
+	UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+	UIListLayout.Padding = UDim.new(0, 30)
+
+	cancel.Name = "cancel"
+	cancel.Parent = holder
+	cancel.AnchorPoint = Vector2.new(0.5, 0.5)
+	cancel.BackgroundColor3 = Color3.fromRGB(0, 170, 0)
+	cancel.BackgroundTransparency = 1.000
+	cancel.BorderSizePixel = 0
+	cancel.Position = UDim2.new(0.228916094, 0, 0.907103062, 0)
+	cancel.Size = UDim2.new(0, 178, 0, 41)
+	cancel.Font = Enum.Font.GothamSemibold
+	cancel.Text = canceltext
+	cancel.TextColor3 = Color3.fromRGB(180, 181, 182)
+	cancel.TextSize = 16.000
+	cancel.TextWrapped = true
+
+	UICorner_2.Parent = cancel
+
+	comfirm.Name = "comfirm"
+	comfirm.Parent = holder
+	comfirm.AnchorPoint = Vector2.new(0.5, 0.5)
+	comfirm.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	comfirm.BorderSizePixel = 0
+	comfirm.Position = UDim2.new(0.728091478, 0, 0.907103062, 0)
+	comfirm.Size = UDim2.new(0, 178, 0, 41)
+	comfirm.AutoButtonColor = false
+	comfirm.Font = Enum.Font.GothamSemibold
+	comfirm.Text = comfirmtext
+	comfirm.TextColor3 = Color3.fromRGB(0, 0, 0)
+	comfirm.TextSize = 16.000
+	comfirm.TextWrapped = true
+
+	UICorner_3.Parent = comfirm
+
+	theline.Name = "theline"
+	theline.Parent = BuyScreenLol
+	theline.AnchorPoint = Vector2.new(0.5, 0.5)
+	theline.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
+	theline.BorderSizePixel = 0
+	theline.Position = UDim2.new(0.497910053, 0, 0.136388198, 0)
+	theline.Size = UDim2.new(0, 350, 0, 0)
+
+	desc.Name = "desc"
+	desc.Parent = BuyScreenLol
+	desc.AnchorPoint = Vector2.new(0.5, 0.5)
+	desc.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	desc.BackgroundTransparency = 1.000
+	desc.BorderSizePixel = 0
+	desc.Position = UDim2.new(0.501312017, 0, 0.780268669, 0)
+	desc.Size = UDim2.new(0, 413, 0, 46)
+	desc.Font = Enum.Font.GothamSemibold
+	desc.Text = desca
+	desc.TextColor3 = Color3.fromRGB(148, 149, 150)
+	desc.TextSize = 18.000
+	desc.TextWrapped = true
+
+	icon.Name = "icon"
+	icon.Parent = BuyScreenLol
+	icon.AnchorPoint = Vector2.new(0.5, 0.5)
+	icon.BackgroundColor3 = Color3.fromRGB(58, 58, 58)
+	icon.BackgroundTransparency = 1.000
+	icon.BorderSizePixel = 0
+	icon.Position = UDim2.new(0.502372026, 0, 0.453225642, 0)
+	icon.Size = UDim2.new(0, 150, 0, 147)
+	icon.Image = "https://www.roblox.com/asset-thumbnail/image?assetId=" .. iconz .. "&width=420&height=420&format=png"
+	icon.ScaleType = Enum.ScaleType.Fit
+	
+	UIStroke.Thickness = 1
+	UIStroke.Color = Color3.fromRGB(255,255,255)
+	UIStroke.LineJoinMode = Enum.LineJoinMode.Round
+	UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+	UIStroke.Parent = cancel
+	
+	UIStroke2.Thickness = 0.8
+	UIStroke2.Color = Color3.fromRGB(70, 70, 70)
+	UIStroke2.LineJoinMode = Enum.LineJoinMode.Round
+	UIStroke2.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+	UIStroke2.Parent = theline
+	
+	UICorner_4.CornerRadius = UDim.new(999, 999)
+	UICorner_4.Parent = icon
+	
+	BuyScreenLol:TweenPosition(UDim2.new(0.499, 0,0.5, 0), "Out", "Quint", 1.3)
+	
+	comfirm.MouseButton1Click:Connect(function()
+		callback()
+		task.wait(.1)
+		BuyScreenLol:TweenPosition(UDim2.new(0.499, 0,-0.999, 0), "Out", "Quint", 1.6)
+		task.wait(1.7)
+		roloxxUI:Destroy()
+	end)
+
+	comfirm.MouseButton1Click:Connect(function()
+		comfirm.BackgroundColor3 = Color3.fromRGB(175, 175, 175)
+		task.wait(.1)
+		comfirm.BackgroundColor3 = Color3.new(1, 1, 1)
+	end)
+	cancel.MouseButton1Click:Connect(function()
+		BuyScreenLol:TweenPosition(UDim2.new(0.499, 0,-0.999, 0), "Out", "Quint", 1.6)
+		task.wait(1.7)
+		roloxxUI:Destroy()	
+	end)
+	cancel.MouseEnter:Connect(function()
+		cancel.TextColor3 = Color3.new(1, 1, 1)
+	end)
+	cancel.MouseLeave:Connect(function()
+		cancel.TextColor3 = Color3.fromRGB(180, 181, 182)
+	end)
+spawn(function()
+		wait(timer)
+		BuyScreenLol:TweenPosition(UDim2.new(0.499, 0,-0.999, 0), "Out", "Quint", 1.6)
+		task.wait(1.7)
+		roloxxUI:Destroy()	
+		end)
+end
+
+function roUI:CreateCancelChoiceNotify(titlea, desca, iconz, canceltext, comfirmtext, timer, callback, nocallback)
+	callback = callback or function() end
+	timer = timer or 5
+	
+	local roloxxUI = Instance.new("ScreenGui")
+	local BuyScreenLol = Instance.new("Frame")
+	local UICorner = Instance.new("UICorner")
+	local title = Instance.new("TextLabel")
+	local holder = Instance.new("Frame")
+	local UIListLayout = Instance.new("UIListLayout")
+	local cancel = Instance.new("TextButton")
+	local UICorner_2 = Instance.new("UICorner")
+	local comfirm = Instance.new("TextButton")
+	local UICorner_3 = Instance.new("UICorner")
+	local theline = Instance.new("Frame")
+	local desc = Instance.new("TextLabel")
+	local icon = Instance.new("ImageLabel")
+	local UICorner_4 = Instance.new("UICorner")
+	local UIStroke = Instance.new("UIStroke")
+	local UIStroke2 = Instance.new("UIStroke")
+	
+	roloxxUI.Name = "roloxUI"
+	roloxxUI.Parent = game.CoreGui
+	roloxxUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+	BuyScreenLol.Name = "BuyScreenLol"
+	BuyScreenLol.Parent = roloxxUI
+	BuyScreenLol.AnchorPoint = Vector2.new(0.5, 0.5)
+	BuyScreenLol.BackgroundColor3 = Color3.fromRGB(44, 45, 48)
+	BuyScreenLol.BorderSizePixel = 0
+	BuyScreenLol.Position = UDim2.new(0.499, 0,-0.999, 0)
+	BuyScreenLol.Size = UDim2.new(0, 412, 0, 359)
+
+	UICorner.Parent = BuyScreenLol
+
+	title.Name = "title"
+	title.Parent = BuyScreenLol
+	title.AnchorPoint = Vector2.new(0.5, 0.5)
+	title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	title.BackgroundTransparency = 1.000
+	title.BorderSizePixel = 0
+	title.Position = UDim2.new(0.500111699, 0, 0.0717996806, 0)
+	title.Size = UDim2.new(0, 367, 0, 29)
+	title.Font = Enum.Font.GothamSemibold
+	title.Text = titlea
+	title.TextColor3 = Color3.fromRGB(255, 255, 255)
+	title.TextScaled = true
+	title.TextSize = 14.000
+	title.TextWrapped = true
+
+	holder.Name = "holder"
+	holder.Parent = BuyScreenLol
+	holder.AnchorPoint = Vector2.new(0.5, 0.5)
+	holder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	holder.BackgroundTransparency = 1.000
+	holder.BorderSizePixel = 0
+	holder.Position = UDim2.new(0.501280189, 0, 0.866197705, 0)
+	holder.Size = UDim2.new(0, 314, 0, 1)
+
+	UIListLayout.Parent = holder
+	UIListLayout.FillDirection = Enum.FillDirection.Horizontal
+	UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+	UIListLayout.Padding = UDim.new(0, 30)
+
+	cancel.Name = "cancel"
+	cancel.Parent = holder
+	cancel.AnchorPoint = Vector2.new(0.5, 0.5)
+	cancel.BackgroundColor3 = Color3.fromRGB(0, 170, 0)
+	cancel.BackgroundTransparency = 1.000
+	cancel.BorderSizePixel = 0
+	cancel.Position = UDim2.new(0.228916094, 0, 0.907103062, 0)
+	cancel.Size = UDim2.new(0, 178, 0, 41)
+	cancel.Font = Enum.Font.GothamSemibold
+	cancel.Text = canceltext
+	cancel.TextColor3 = Color3.fromRGB(180, 181, 182)
+	cancel.TextSize = 16.000
+	cancel.TextWrapped = true
+
+	UICorner_2.Parent = cancel
+
+	comfirm.Name = "comfirm"
+	comfirm.Parent = holder
+	comfirm.AnchorPoint = Vector2.new(0.5, 0.5)
+	comfirm.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	comfirm.BorderSizePixel = 0
+	comfirm.Position = UDim2.new(0.728091478, 0, 0.907103062, 0)
+	comfirm.Size = UDim2.new(0, 178, 0, 41)
+	comfirm.AutoButtonColor = false
+	comfirm.Font = Enum.Font.GothamSemibold
+	comfirm.Text = comfirmtext
+	comfirm.TextColor3 = Color3.fromRGB(0, 0, 0)
+	comfirm.TextSize = 16.000
+	comfirm.TextWrapped = true
+
+	UICorner_3.Parent = comfirm
+
+	theline.Name = "theline"
+	theline.Parent = BuyScreenLol
+	theline.AnchorPoint = Vector2.new(0.5, 0.5)
+	theline.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
+	theline.BorderSizePixel = 0
+	theline.Position = UDim2.new(0.497910053, 0, 0.136388198, 0)
+	theline.Size = UDim2.new(0, 350, 0, 0)
+
+	desc.Name = "desc"
+	desc.Parent = BuyScreenLol
+	desc.AnchorPoint = Vector2.new(0.5, 0.5)
+	desc.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	desc.BackgroundTransparency = 1.000
+	desc.BorderSizePixel = 0
+	desc.Position = UDim2.new(0.501312017, 0, 0.780268669, 0)
+	desc.Size = UDim2.new(0, 413, 0, 46)
+	desc.Font = Enum.Font.GothamSemibold
+	desc.Text = desca
+	desc.TextColor3 = Color3.fromRGB(148, 149, 150)
+	desc.TextSize = 18.000
+	desc.TextWrapped = true
+
+	icon.Name = "icon"
+	icon.Parent = BuyScreenLol
+	icon.AnchorPoint = Vector2.new(0.5, 0.5)
+	icon.BackgroundColor3 = Color3.fromRGB(58, 58, 58)
+	icon.BackgroundTransparency = 1.000
+	icon.BorderSizePixel = 0
+	icon.Position = UDim2.new(0.502372026, 0, 0.453225642, 0)
+	icon.Size = UDim2.new(0, 150, 0, 147)
+	icon.Image = "https://www.roblox.com/asset-thumbnail/image?assetId=" .. iconz .. "&width=420&height=420&format=png"
+	icon.ScaleType = Enum.ScaleType.Fit
+	
+	UIStroke.Thickness = 1
+	UIStroke.Color = Color3.fromRGB(255,255,255)
+	UIStroke.LineJoinMode = Enum.LineJoinMode.Round
+	UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+	UIStroke.Parent = cancel
+	
+	UIStroke2.Thickness = 0.8
+	UIStroke2.Color = Color3.fromRGB(70, 70, 70)
+	UIStroke2.LineJoinMode = Enum.LineJoinMode.Round
+	UIStroke2.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+	UIStroke2.Parent = theline
+	
+	UICorner_4.CornerRadius = UDim.new(999, 999)
+	UICorner_4.Parent = icon
+	
+	BuyScreenLol:TweenPosition(UDim2.new(0.499, 0,0.5, 0), "Out", "Quint", 1.3)
+	
+	comfirm.MouseButton1Click:Connect(function()
+		task.wait(.1)
+		BuyScreenLol:TweenPosition(UDim2.new(0.499, 0,-0.999, 0), "Out", "Quint", 1.6)
+		task.wait(1.7)
+		roloxxUI:Destroy()
+	end)
+
+	comfirm.MouseButton1Click:Connect(function()
+		comfirm.BackgroundColor3 = Color3.fromRGB(175, 175, 175)
+		task.wait(.1)
+		comfirm.BackgroundColor3 = Color3.new(1, 1, 1)
+	end)
+	cancel.MouseButton1Click:Connect(function()
+callback()
+BuyScreenLol:TweenPosition(UDim2.new(0.499, 0,-0.999, 0), "Out", "Quint", 1.6)
+		task.wait(1.7)
+		roloxxUI:Destroy()	
+	end)
+	cancel.MouseEnter:Connect(function()
+		cancel.TextColor3 = Color3.new(1, 1, 1)
+	end)
+	cancel.MouseLeave:Connect(function()
+		cancel.TextColor3 = Color3.fromRGB(180, 181, 182)
+	end)
+spawn(function()
+		wait(timer)
+		BuyScreenLol:TweenPosition(UDim2.new(0.499, 0,-0.999, 0), "Out", "Quint", 1.6)
+		task.wait(1.7)
+		roloxxUI:Destroy()	
+		end)
+end
+
+function roUI:CreateNotify(title, desca, buttontext, timer, callback)
+	callback = callback or function() end
+	timer = timer or 5
+
+	local roloxUI = Instance.new("ScreenGui")
+	roloxUI.Name = "roloxUI"
+	roloxUI.Parent = game.CoreGui
+	roloxUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+	
+	local ErrorScreenLol = Instance.new("Frame")
+	local UICorner_5 = Instance.new("UICorner")
+	local title_2 = Instance.new("TextLabel")
+	local Frame = Instance.new("Frame")
+	local desc_2 = Instance.new("TextLabel")
+	local TextButton = Instance.new("TextButton")
+	local UICorner_6 = Instance.new("UICorner")
+	local UIStroke3 = Instance.new("UIStroke")
+
+
+	ErrorScreenLol.Name = "ErrorScreenLol"
+	ErrorScreenLol.Parent = roloxUI
+	ErrorScreenLol.AnchorPoint = Vector2.new(0.5, 0.5)
+	ErrorScreenLol.BackgroundColor3 = Color3.fromRGB(44, 45, 48)
+	ErrorScreenLol.BorderSizePixel = 0
+	ErrorScreenLol.Position = UDim2.new(0.499, 0,-0.999, 0)
+	ErrorScreenLol.Size = UDim2.new(0, 412, 0, 183)
+
+	UICorner_5.Parent = ErrorScreenLol
+
+	title_2.Name = "title"
+	title_2.Parent = ErrorScreenLol
+	title_2.AnchorPoint = Vector2.new(0.5, 0.5)
+	title_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	title_2.BackgroundTransparency = 1.000
+	title_2.BorderSizePixel = 0
+	title_2.Position = UDim2.new(0.497684509, 0, 0.11551553, 0)
+	title_2.Size = UDim2.new(0, 367, 0, 29)
+	title_2.Font = Enum.Font.GothamSemibold
+	title_2.Text = title
+	title_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+	title_2.TextScaled = true
+	title_2.TextSize = 14.000
+	title_2.TextWrapped = true
+
+	Frame.Parent = ErrorScreenLol
+	Frame.AnchorPoint = Vector2.new(0.5, 0.5)
+	Frame.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
+	Frame.BorderSizePixel = 0
+	Frame.Position = UDim2.new(0.500337243, 0, 0.229284376, 0)
+	Frame.Size = UDim2.new(0, 350, 0, 0)
+
+	desc_2.Name = "desc"
+	desc_2.Parent = ErrorScreenLol
+	desc_2.AnchorPoint = Vector2.new(0.5, 0.5)
+	desc_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	desc_2.BackgroundTransparency = 1.000
+	desc_2.BorderSizePixel = 0
+	desc_2.Position = UDim2.new(0.498204291, 0, 0.498041213, 0)
+	desc_2.Size = UDim2.new(0, 413, 0, 69)
+	desc_2.Font = Enum.Font.GothamSemibold
+	desc_2.Text = desca
+	desc_2.TextColor3 = Color3.fromRGB(148, 149, 150)
+	desc_2.TextSize = 18.000
+	desc_2.TextWrapped = true
+
+	TextButton.Parent = ErrorScreenLol
+	TextButton.AnchorPoint = Vector2.new(0.5, 0.5)
+	TextButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextButton.BorderSizePixel = 0
+	TextButton.Position = UDim2.new(0.50292182, 0, 0.851440609, 0)
+	TextButton.Size = UDim2.new(0, 370, 0, 32)
+	TextButton.AutoButtonColor = false
+	TextButton.Font = Enum.Font.GothamSemibold
+	TextButton.Text = buttontext
+	TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+	TextButton.TextSize = 24.000
+	TextButton.TextWrapped = true
+
+	UIStroke3.Thickness = 0.8
+	UIStroke3.Color = Color3.fromRGB(70, 70, 70)
+	UIStroke3.LineJoinMode = Enum.LineJoinMode.Round
+	UIStroke3.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+	UIStroke3.Parent = Frame
+
+	UICorner_6.Parent = TextButton
+	
+	ErrorScreenLol:TweenPosition(UDim2.new(0.499, 0,0.5, 0), "Out", "Quint", 1.3)
+	
+	TextButton.MouseButton1Click:Connect(function()
+		callback()
+		ErrorScreenLol:TweenPosition(UDim2.new(0.499, 0,-0.999, 0), "Out", "Quint", 1.6)
+		task.wait(1.7)
+		roloxUI:Destroy()
+	end)
+	TextButton.MouseButton1Click:Connect(function()
+		TextButton.BackgroundColor3 = Color3.fromRGB(175, 175, 175)
+		task.wait(.1)
+		TextButton.BackgroundColor3 = Color3.new(1, 1, 1)
+	end)
+	spawn(function()
+	wait(timer)
+	ErrorScreenLol:TweenPosition(UDim2.new(0.499, 0,-0.999, 0), "Out", "Quint", 1.6)
+	task.wait(1.7)
+		roloxUI:Destroy()
+		end)
+end
+
+function roUI:NotWorkingFix()
+	return
+end
+	
+return roUI
